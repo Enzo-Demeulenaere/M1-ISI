@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Application Python Vulnerable</title>
+</head>
+<body>
+<p>
+Bonjour, je suis une application vulnerable qui sert a inserer des chaines dans une base de données MySQL!
+</p>
+
+<p>
+Liste des chaines actuellement insérées:
+<ul>
+<li>chaine envoye par: 127.0.0.1</li>
+<li>malice et subterfuges envoye par: 127.0.0.1</li>
+<li>malice et subterfuges envoye par: macron</li>
+<li>malice et subterfuges','macron') --  envoye par: 127.0.0.1</li>
+<li><script>alert(Salam) envoye par: 127.0.0.1</li>
+<li><script>alert("Salam") envoye par: 127.0.0.1</li>
+<li><script>alert("Salam")\<\/script\>  envoye par: 127.0.0.1</li>
+<li><script>alert("Salam")\ envoye par: 127.0.0.1</li>
+<li><script>alert("Salam")</script>  envoye par: 127.0.0.1</li>
+<li><script>alert(\'Salam')\ envoye par: 127.0.0.1</li>
+<li><script>alert('Salam')\ envoye par: 127.0.0.1</li>
+</ul>
+</p>
+
+<p> Inserer une chaine:
+
+<form method="post" onsubmit="return validate()">
+<input type="text" name="chaine" id="chaine" value="" />
+<br />
+<input type="submit" name="submit" value="OK" />
+</form>
+
+<script>
+function validate() {
+    var regex = /^[a-zA-Z0-9]+$/;
+    var chaine = document.getElementById('chaine').value;
+    console.log(regex.test(chaine));
+    if (!regex.test(chaine)) {
+        alert("Veuillez entrer une chaine avec uniquement des lettres et des chiffres");
+        return false;
+    }
+    return true;
+}
+</script>
+
+</p>
+</body>
+</html>
